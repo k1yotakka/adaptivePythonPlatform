@@ -2,8 +2,8 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    DATABASE_URL: str = "postgresql+psycopg2://postgres:password@localhost:5432/pylearn"
-    SECRET_KEY: str = "changeme"
+    DATABASE_URL: str = "postgresql+psycopg2://postgres:2705@localhost:5432/pylearn"
+    SECRET_KEY: str = "2705Arman"
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 1440
     CORS_ORIGINS: str = "http://localhost:5173,http://localhost:5174,http://localhost:5175"

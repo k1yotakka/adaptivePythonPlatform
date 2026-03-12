@@ -3,9 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 import os
 
-from app.config import settings
-from app.database import engine, Base, run_migrations
-from app.routers import auth, courses, tasks, groups, ai, admin, students, practice
+from .config import settings
+from .database import engine, Base, run_migrations
+from .routers import auth, courses, tasks, groups, ai, admin, students, practice
 
 # Создаём все таблицы при старте
 Base.metadata.create_all(bind=engine)

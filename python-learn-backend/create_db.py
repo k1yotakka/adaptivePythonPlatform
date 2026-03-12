@@ -1,6 +1,6 @@
 import psycopg2
 
-conn = psycopg2.connect(host='localhost', user='postgres', password='postgres')
+conn = psycopg2.connect(host='localhost', user='postgres', password='2705')
 conn.autocommit = True
 cur = conn.cursor()
 cur.execute("SELECT 1 FROM pg_database WHERE datname='pylearn'")

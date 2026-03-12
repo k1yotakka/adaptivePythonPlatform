@@ -1,7 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 from datetime import datetime
-from app.models import UserRole, TaskDifficulty, TaskType
+from .models import UserRole, TaskDifficulty, TaskType
 
 
 # ─── Auth ───────────────────────────────────────────────────────────────────

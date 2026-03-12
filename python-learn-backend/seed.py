@@ -45,8 +45,8 @@ db.add_all([teacher1, teacher2])
 
 # ─── Students ────────────────────────────────────────────────────────────────
 students = [
-    models.User(name="Amir Zhakupov", email="amir@student.com", password_hash=hash_password("student123"), role=models.UserRole.student, level="beginner", learning_goal="Learn Python for data science"),
-    models.User(name="Aslan Dualtov", email="aslan@student.com", password_hash=hash_password("student123"), role=models.UserRole.student, level="intermediate", learning_goal="Improve coding skills"),
+    models.User(name="Arman Aliakparov", email="arman@student.com", password_hash=hash_password("student123"), role=models.UserRole.student, level="beginner", learning_goal="Learn Python for data science"),
+    models.User(name="Eziz Annaev", email="eziz@student.com", password_hash=hash_password("student123"), role=models.UserRole.student, level="intermediate", learning_goal="Improve coding skills"),
     models.User(name="Almas Zhasulanov", email="almas@student.com", password_hash=hash_password("student123"), role=models.UserRole.student, level="beginner", learning_goal="Start programming"),
     models.User(name="Dana Serik", email="dana@student.com", password_hash=hash_password("student123"), role=models.UserRole.student, level="intermediate", learning_goal="Prepare for interviews"),
     models.User(name="Erlan Bektas", email="erlan@student.com", password_hash=hash_password("student123"), role=models.UserRole.student, level="advanced", learning_goal="Master algorithms"),
