@@ -1,0 +1,122 @@
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.auth-steps {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-student-secondary);
+  background: var(--bg-student-pill);
+  border: 1px solid var(--border-student-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  align-self: center;
+}
+
+.auth-header {
+  text-align: center;
+}
+
+.auth-header h1 {
+  font-family: var(--font-serif);
+  font-size: 28px;
+  color: var(--text-student-primary);
+  margin-bottom: 8px;
+}
+
+.auth-header p {
+  color: var(--text-student-secondary);
+  font-size: 14px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-student-primary);
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px 12px;
+  border: 1px solid var(--border-student-color);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--text-student-primary);
+  outline: none;
+}
+
+.role-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.role-selector button {
+  flex: 1;
+  padding: 8px 0;
+  border: 1px solid var(--border-student-color);
+  background: white;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.role-selector button.active {
+  background: var(--text-student-primary);
+  color: white;
+  border-color: var(--text-student-primary);
+}
+
+.w-full {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 0;
+}
+
+.auth-footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-student-secondary);
+  margin-top: 8px;
+}
+
+.auth-footer a {
+  color: var(--text-student-primary);
+  font-weight: 500;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+.auth-error {
+  padding: 10px 12px;
+  background: #FEE2E2;
+  border: 1px solid #FECACA;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #991B1B;
+}

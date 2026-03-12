@@ -1,0 +1,135 @@
+.lesson-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.lesson-editor-body {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.editor-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.editor-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-teacher-primary);
+}
+
+.editor-label .hint {
+  font-weight: 400;
+  color: var(--text-teacher-secondary);
+  margin-left: 8px;
+}
+
+.editor-title-input {
+  padding: 10px 14px;
+  border: 1px solid var(--border-teacher-color);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-family: var(--font-sans);
+  color: var(--text-teacher-primary);
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.editor-title-input:focus {
+  outline: none;
+  border-color: var(--text-teacher-primary);
+}
+
+.editor-content {
+  padding: 14px;
+  border: 1px solid var(--border-teacher-color);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-teacher-primary);
+  background: #FAFAFA;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+.editor-content:focus {
+  outline: none;
+  border-color: var(--text-teacher-primary);
+  background: white;
+}
+
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tasks-empty-hint {
+  padding: 20px;
+  background: var(--bg-teacher-sidebar);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  color: var(--text-teacher-secondary);
+  text-align: center;
+}
+
+.lesson-tasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lesson-task-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border-teacher-color);
+  border-radius: var(--radius-md);
+  background: white;
+  color: var(--text-teacher-secondary);
+}
+
+.lesson-task-title {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-teacher-primary);
+}
+
+.difficulty-chip {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: var(--bg-teacher-sidebar);
+  color: var(--text-teacher-secondary);
+  text-transform: capitalize;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--border-teacher-color);
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--text-teacher-primary);
+  background: white;
+  transition: all 0.15s;
+}
+
+.btn-outline:hover {
+  border-color: var(--text-teacher-primary);
+  background: var(--bg-teacher-sidebar);
+}
+
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}

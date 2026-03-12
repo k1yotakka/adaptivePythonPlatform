@@ -1,0 +1,28 @@
+.progress-wrapper {
+  width: 100px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.progress-track {
+  height: 6px;
+  background: var(--bg-teacher-hover);
+  border-radius: var(--radius-pill);
+  margin-top: 6px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  transition: width 0.3s ease;
+}
+
+.progress-label {
+  font-size: 0.75rem;
+  color: var(--text-teacher-secondary);
+  display: block;
+}

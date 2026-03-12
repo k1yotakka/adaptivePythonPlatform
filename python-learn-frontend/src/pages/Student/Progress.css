@@ -1,0 +1,134 @@
+.progress-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.progress-page header h1 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.progress-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  background: white;
+  border: var(--border-student-solid);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-card.highlight {
+  background: var(--text-student-primary);
+  color: white;
+  border-color: transparent;
+}
+
+.stat-value {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  font-family: var(--font-serif);
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-student-secondary);
+}
+
+.stat-card.highlight .stat-label {
+  color: rgba(255,255,255,0.7);
+}
+
+.progress-bar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.big-progress-track {
+  height: 12px;
+  background: var(--bg-student-sidebar);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.big-progress-fill {
+  height: 100%;
+  background: var(--text-student-primary);
+  border-radius: 99px;
+  transition: width 0.6s ease;
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-student-secondary);
+}
+
+.topic-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.topic-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.topic-bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.topic-bar-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.topic-bar-name {
+  font-weight: 500;
+  color: var(--text-student-primary);
+}
+
+.topic-bar-count {
+  color: var(--text-student-secondary);
+}
+
+.topic-bar-track {
+  height: 8px;
+  background: var(--bg-student-sidebar);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.topic-bar-fill {
+  height: 100%;
+  background: var(--text-student-primary);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+@media (max-width: 768px) {
+  .progress-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

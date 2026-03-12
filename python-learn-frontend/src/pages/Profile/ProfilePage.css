@@ -1,0 +1,229 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 560px;
+}
+
+.profile-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Avatar block */
+.profile-avatar-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.profile-avatar-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-student-color, #e5e7eb);
+}
+
+.profile-avatar-initials {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #E0E7FF;
+  color: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.profile-avatar-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--text-student-primary, #111);
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.profile-avatar-btn:hover { opacity: 0.8; }
+.profile-avatar-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.profile-avatar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-avatar-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.profile-avatar-role {
+  font-size: 0.85rem;
+  color: var(--text-student-secondary, #6b7280);
+}
+
+/* Card */
+.profile-card {
+  background: var(--bg-student-card, #fff);
+  border: var(--border-student-solid, 1px solid #e5e7eb);
+  border-radius: var(--radius-md, 10px);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Form */
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-field label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-student-secondary, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.profile-field input {
+  padding: 9px 12px;
+  border: var(--border-student-solid, 1px solid #e5e7eb);
+  border-radius: var(--radius-sm, 6px);
+  font-size: 0.875rem;
+  background: var(--bg-student-body, #f9fafb);
+  color: var(--text-student-primary, #111);
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.profile-field input:focus {
+  border-color: var(--text-student-primary, #111);
+}
+
+.profile-readonly {
+  background: var(--bg-student-sidebar, #f3f4f6) !important;
+  cursor: default;
+  color: var(--text-student-secondary, #6b7280) !important;
+}
+
+.profile-save-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: var(--text-student-primary, #111);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm, 6px);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: opacity 0.15s;
+}
+
+.profile-save-btn:hover { opacity: 0.85; }
+.profile-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.profile-success {
+  font-size: 0.85rem;
+  color: #16a34a;
+  padding: 8px 12px;
+  background: #f0fdf4;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid #bbf7d0;
+}
+
+.profile-error {
+  font-size: 0.85rem;
+  color: #dc2626;
+  padding: 8px 12px;
+  background: #fef2f2;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid #fecaca;
+}
+
+.profile-hint {
+  font-size: 0.8rem;
+  color: var(--text-student-secondary, #6b7280);
+}
+
+.profile-error-inline {
+  font-size: 0.8rem;
+  color: #dc2626;
+}
+
+/* Teacher variant — use teacher CSS vars */
+.teacher-main-content .profile-page {
+  color: var(--text-teacher-primary);
+}
+
+.teacher-main-content .profile-card {
+  background: var(--bg-teacher-card, #fff);
+  border: 1px solid var(--border-teacher-subtle, #e5e7eb);
+}
+
+.teacher-main-content .profile-field input {
+  background: var(--bg-teacher-body, #f9fafb);
+  color: var(--text-teacher-primary, #111);
+  border: 1px solid var(--border-teacher-subtle, #e5e7eb);
+}
+
+.teacher-main-content .profile-field input:focus {
+  border-color: var(--text-teacher-primary, #111);
+}
+
+.teacher-main-content .profile-readonly {
+  background: var(--bg-teacher-hover, #f3f4f6) !important;
+  color: var(--text-teacher-secondary, #6b7280) !important;
+}
+
+.teacher-main-content .profile-avatar-initials {
+  background-color: #E0E7FF;
+  color: var(--accent-teacher-purple, #4f46e5);
+}
+
+.teacher-main-content .profile-save-btn {
+  background: var(--text-teacher-primary, #111);
+}
+
+.teacher-main-content .profile-avatar-btn {
+  background: var(--text-teacher-primary, #111);
+}

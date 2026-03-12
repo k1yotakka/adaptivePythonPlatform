@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  /* Common Palette */
+  --font-serif: 'Playfair Display', serif; 
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-mono: "Menlo", "Consolas", "Monaco", monospace;
+  
+  --radius-sm: 4px;
+  --radius-md: 8px; 
+  --radius-lg: 12px;
+  --radius-pill: 99px;
+  
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  /* Student Theme (from design-850b4d92.html) */
+  --bg-student-body: #FFFFFF;
+  --bg-student-sidebar: #F7F7F6; 
+  --bg-student-active: #EAEAEA; 
+  --bg-student-pill: #F0F0F0;
+  
+  --text-student-primary: #111111; 
+  --text-student-secondary: #666666; 
+  --text-student-tertiary: #999999;
+  
+  --border-student-color: #E6E6E6;
+  --border-student-style: 1px dotted var(--border-student-color); 
+  --border-student-solid: 1px solid var(--border-student-color);
+  
+  --accent-student-green: #22C55E; 
+  --accent-student-green-bg: #DCFCE7;
+
+  /* Teacher Theme (from design-54156309.html) */
+  --bg-teacher-body: #F9FAFB; 
+  --bg-teacher-card: #FFFFFF;
+  --bg-teacher-hover: #F3F4F6;
+  --bg-teacher-subtle: #F9FAFB;
+  
+  --text-teacher-primary: #111827; 
+  --text-teacher-secondary: #6B7280; 
+  --text-teacher-tertiary: #9CA3AF;
+  
+  --border-teacher-subtle: #E5E7EB; 
+  
+  --accent-teacher-purple: #6366F1; 
+  
+  --shadow-teacher-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+
+  /* Practice Theme (from design-a54dc894.html) */
+  --bg-practice-canvas: #F5F4F1; 
+  --bg-practice-surface: #FFFFFF;
+  --bg-practice-editor: #1A1A1A;
+  
+  --accent-practice-success: #3D8B3D; 
+  --accent-practice-error: #C13010;   
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Base Utility Classes */
+.text-sm { font-size: 0.875rem; }
+.text-xs { font-size: 0.75rem; }
+.text-base { font-size: 1rem; }
+.font-medium { font-weight: 500; }
+
+a { text-decoration: none; }

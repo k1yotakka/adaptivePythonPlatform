@@ -1,0 +1,460 @@
+.student-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  border-bottom: var(--border-student-style); 
+  padding-bottom: var(--space-md);
+}
+
+.hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.serif-title {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text-student-primary);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--text-student-secondary);
+  font-size: 14px;
+}
+
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--bg-student-sidebar);
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-student-primary);
+}
+
+.streak-fire {
+  color: #F59E0B; 
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: 10px;
+}
+
+.tab {
+  padding: 6px 12px;
+  font-size: 14px;
+  color: var(--text-student-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+
+.tab.active {
+  background-color: var(--bg-student-pill);
+  color: var(--text-student-primary);
+  font-weight: 500;
+}
+
+/* Layout rows */
+.dash-row {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.dash-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-section--lg {
+  flex: 3;
+  min-width: 0;
+}
+
+.dash-section--sm {
+  flex: 2;
+  min-width: 0;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--text-student-primary);
+}
+
+/* Roadmap List */
+.roadmap-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.roadmap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: var(--border-student-style); 
+}
+
+.roadmap-item:first-child {
+  padding-top: 0;
+}
+
+.roadmap-info {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.module-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--bg-student-sidebar);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-student-secondary);
+}
+
+.module-icon.completed {
+  background-color: var(--accent-student-green-bg);
+  color: var(--accent-student-green);
+}
+
+.module-icon.in-progress {
+  background-color: var(--text-student-primary);
+  color: white;
+}
+
+.module-text h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.module-text p {
+  font-size: 13px;
+  color: var(--text-student-secondary);
+}
+
+.status-pill {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-student-sidebar);
+  color: var(--text-student-secondary);
+}
+
+.status-pill.active {
+  background-color: var(--text-student-primary);
+  color: white;
+}
+
+/* Skills Container */
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.skill-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-student-secondary);
+}
+
+.skill-bar-bg {
+  height: 8px;
+  background-color: var(--bg-student-sidebar);
+  border-radius: 4px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background-color: var(--text-student-primary); 
+  border-radius: 4px;
+}
+
+.skill-bar-fill.weak {
+  background-color: #F87171; 
+}
+
+/* Achievement Row (horizontal) */
+.achievement-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.achievement-row .badge-card {
+  width: 110px;
+  min-height: 100px;
+  height: auto;
+  aspect-ratio: unset;
+  flex-shrink: 0;
+}
+
+.badge-card {
+  background-color: var(--bg-student-sidebar);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 8px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.badge-card--earned {
+  background: #F0FDF4;
+  border-color: #BBF7D0;
+}
+
+.badge-card--locked {
+  opacity: 0.7;
+}
+
+.badge-card:hover {
+  border-color: var(--border-student-color);
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  opacity: 1;
+}
+
+.badge-icon {
+  font-size: 24px;
+}
+
+.badge-name {
+  font-size: 11px;
+  color: var(--text-student-secondary);
+  text-align: center;
+  font-weight: 500;
+}
+
+.badge-progress {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: 4px;
+}
+
+.badge-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--border-student-color);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.badge-progress-fill {
+  height: 100%;
+  background: var(--text-student-primary);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.badge-progress-label {
+  font-size: 10px;
+  color: var(--text-student-tertiary);
+  text-align: center;
+}
+
+.section-subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-student-secondary);
+}
+
+/* Task List */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.task-card {
+  border: var(--border-student-solid); 
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  transition: border-color 0.2s;
+}
+
+.task-card:hover {
+  border-color: var(--text-student-secondary);
+}
+
+.check-circle {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border-student-color);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.task-text {
+  font-size: 14px;
+  color: var(--text-student-primary);
+  flex: 1;
+}
+
+.task-due {
+  font-size: 12px;
+  color: var(--text-student-secondary);
+}
+
+.quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quick-links--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.quick-links--horizontal .quick-link-btn {
+  flex: 1;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.quick-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: var(--border-student-solid);
+  border-radius: var(--radius-md);
+  background: white;
+  text-decoration: none;
+  color: var(--text-student-primary);
+  font-size: 14px;
+  transition: all 0.15s;
+}
+
+.quick-link-btn:hover {
+  border-color: var(--text-student-primary);
+  background: var(--bg-student-sidebar);
+}
+
+.empty-hint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  background: var(--bg-student-sidebar);
+  border-radius: var(--radius-md);
+  color: var(--text-student-secondary);
+  font-size: 14px;
+}
+
+.empty-hint a {
+  color: var(--text-student-primary);
+  font-weight: 500;
+}
+
+.roadmap-link {
+  text-decoration: none;
+  display: flex;
+}
+
+.check-circle.done {
+  background: var(--accent-student-green, #22C55E);
+  border-color: var(--accent-student-green, #22C55E);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.check-circle.failed {
+  background: #FEE2E2;
+  border-color: #FECACA;
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.task-card-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.task-status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+.task-status-badge.passed {
+  background: #DCFCE7;
+  color: #166534;
+}
+.task-status-badge.failed {
+  background: #FEE2E2;
+  color: #991B1B;
+}
+
+.page-loading {
+  padding: 40px;
+  color: var(--text-student-secondary);
+  font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  .dash-row {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .dash-section--lg,
+  .dash-section--sm {
+    flex: none;
+    width: 100%;
+  }
+  .quick-links--horizontal .quick-link-btn {
+    min-width: 140px;
+  }
+}

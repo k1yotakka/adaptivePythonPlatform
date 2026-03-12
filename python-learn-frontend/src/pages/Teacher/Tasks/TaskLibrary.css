@@ -1,0 +1,152 @@
+.task-library {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.task-filters {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.filter-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--border-teacher-subtle);
+  background: white;
+  border-radius: 99px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-teacher-secondary);
+}
+
+.filter-btn.active {
+  background: var(--text-teacher-primary);
+  color: white;
+  border-color: var(--text-teacher-primary);
+}
+
+.filter-btn:hover:not(.active) {
+  background: var(--bg-teacher-hover);
+  color: var(--text-teacher-primary);
+}
+
+.task-count {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--text-teacher-secondary);
+}
+
+.tasks-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-row-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--bg-teacher-card);
+  border: 1px solid var(--border-teacher-subtle);
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.task-row-item:hover {
+  background: var(--bg-teacher-hover);
+}
+
+.task-row-icon {
+  color: var(--text-teacher-secondary);
+  flex-shrink: 0;
+}
+
+.task-row-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.task-row-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-teacher-primary);
+}
+
+.task-row-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.difficulty-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 99px;
+  text-transform: capitalize;
+}
+
+.type-badge {
+  font-size: 11px;
+  color: var(--text-teacher-secondary);
+  background: var(--bg-teacher-hover);
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.task-row-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--text-teacher-secondary);
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  text-decoration: none;
+}
+
+.icon-btn:hover {
+  color: var(--text-teacher-primary);
+  background: var(--bg-teacher-hover);
+}
+
+.icon-btn-danger {
+  background: none;
+  border: none;
+  color: var(--text-teacher-secondary);
+  padding: 6px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.icon-btn-danger:hover {
+  color: #DC2626;
+  background: #FEF2F2;
+}
+
+.tasks-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px;
+  text-align: center;
+  color: var(--text-teacher-secondary);
+}

@@ -1,0 +1,31 @@
+.card {
+  background: var(--bg-teacher-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-teacher-subtle);
+  box-shadow: var(--shadow-teacher-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-teacher-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  font-size: 1rem;
+  color: var(--text-teacher-primary);
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 0; 
+}
+
+.card-body-padded {
+  padding: 24px;
+}

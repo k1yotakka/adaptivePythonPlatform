@@ -1,0 +1,35 @@
+.practice-layout-container {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-practice-canvas);
+  color: var(--text-student-primary);
+}
+
+.panel-context {
+  background-color: var(--bg-practice-canvas);
+  border-right: 1px solid rgba(0,0,0,0.03);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: var(--space-xl);
+}
+
+.panel-workspace {
+  background-color: var(--bg-practice-surface);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg) var(--space-xl);
+  gap: var(--space-lg);
+  position: relative;
+  
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
+  box-shadow: -10px 0 30px rgba(0,0,0,0.02);
+  
+  margin: var(--space-sm) var(--space-sm) var(--space-sm) 0;
+  height: calc(100% - 16px);
+  overflow-y: auto;
+}

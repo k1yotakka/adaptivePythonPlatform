@@ -1,0 +1,115 @@
+.student-map {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.student-map header {
+  border-bottom: var(--border-student-style);
+  padding-bottom: var(--space-md);
+}
+
+.student-map header h1 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.course-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.course-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.course-header p {
+  font-size: 14px;
+  color: var(--text-student-secondary);
+}
+
+.modules-track {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.module-node {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  border: var(--border-student-solid);
+  border-radius: var(--radius-lg);
+  background: white;
+  text-decoration: none;
+  color: var(--text-student-primary);
+  transition: all 0.2s;
+}
+
+.module-node:hover {
+  border-color: var(--text-student-primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.module-node-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--bg-student-sidebar);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-student-secondary);
+  flex-shrink: 0;
+}
+
+.module-node-number {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-student-tertiary);
+  margin-bottom: 4px;
+}
+
+.module-node-title {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.module-node-desc {
+  font-size: 13px;
+  color: var(--text-student-secondary);
+  margin-top: 2px;
+}
+
+.map-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 80px 24px;
+  text-align: center;
+  color: var(--text-student-secondary);
+}
+
+.map-empty h2 {
+  font-size: 20px;
+  color: var(--text-student-primary);
+}
+
+.no-modules {
+  font-size: 14px;
+  color: var(--text-student-secondary);
+  padding: 16px 0;
+}
+
+.page-loading {
+  padding: 40px;
+  color: var(--text-student-secondary);
+  font-size: 14px;
+}

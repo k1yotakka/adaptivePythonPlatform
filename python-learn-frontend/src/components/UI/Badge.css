@@ -1,0 +1,31 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 var(--space-sm);
+  border-radius: 12px;
+  background-color: var(--ui-pill-bg, #E6E4E0); 
+  color: var(--text-primary);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.badge-difficulty {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.badge-success {
+  background-color: var(--accent-practice-success);
+  color: white;
+}
+
+.badge-warning {
+  background-color: #F59E0B;
+  color: white;
+}
+
+.badge-error {
+  background-color: var(--accent-practice-error);
+  color: white;
+}

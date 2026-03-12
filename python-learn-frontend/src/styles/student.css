@@ -1,0 +1,150 @@
+.student-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-student-body);
+  color: var(--text-student-primary);
+}
+
+.student-sidebar {
+  width: 260px;
+  background-color: var(--bg-student-sidebar);
+  height: 100%;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  border-right: var(--border-student-solid); 
+  flex-shrink: 0;
+}
+
+.student-sidebar .brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: var(--space-xl);
+  font-weight: 600;
+  color: var(--text-student-primary);
+}
+
+.student-sidebar .brand-icon {
+  width: 24px;
+  height: 24px;
+  background: var(--text-student-primary);
+  border-radius: 6px;
+}
+
+.student-sidebar .nav-group {
+  margin-bottom: var(--space-lg);
+}
+
+.student-sidebar .nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  color: var(--text-student-secondary);
+  font-size: 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  margin-bottom: 2px;
+  gap: 10px;
+}
+
+.student-sidebar .nav-item:hover, .student-sidebar .nav-item.active {
+  background-color: var(--bg-student-active);
+  color: var(--text-student-primary);
+}
+
+.student-sidebar .nav-item svg {
+  opacity: 0.7;
+}
+
+.student-sidebar .nav-item span:first-of-type {
+  flex: 1;
+}
+
+.student-sidebar .badge-count {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.student-sidebar .nav-section-title {
+  font-size: 12px;
+  color: var(--text-student-tertiary);
+  margin-bottom: var(--space-xs);
+  padding-left: 12px;
+  margin-top: var(--space-lg);
+}
+
+.student-sidebar .user-profile {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: var(--space-md);
+  border-top: var(--border-student-solid);
+}
+
+.student-sidebar .avatar {
+  width: 32px;
+  height: 32px;
+  background-color: #DDD;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.student-sidebar .user-info {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.student-sidebar .user-name { font-weight: 500; }
+.student-sidebar .user-status { color: var(--text-student-secondary); font-size: 11px; }
+
+.student-sidebar .status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-student-green);
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-student-secondary);
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  margin-left: auto;
+  transition: color 0.2s;
+}
+
+.logout-btn:hover {
+  color: var(--text-student-primary);
+  background: var(--bg-student-active);
+}
+
+.student-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-xl) 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.student-main:has(.screening-test-page) {
+  padding: 0;
+  max-width: 100%;
+  gap: 0;
+  overflow: hidden;
+  margin: 0;
+  height: 100%;
+}

@@ -1,0 +1,174 @@
+.task-list-page {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.task-list-page header h1 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: var(--text-student-secondary);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+}
+.back-btn:hover { color: var(--text-student-primary); }
+
+/* ── Topic Cards ──────────────────────────────── */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.topic-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 20px 20px;
+  border: var(--border-student-solid);
+  border-radius: var(--radius-lg);
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.topic-card:hover {
+  border-color: var(--text-student-primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transform: translateY(-2px);
+}
+
+.topic-card-icon { font-size: 32px; }
+.topic-card-title { font-size: 15px; font-weight: 600; color: var(--text-student-primary); }
+.topic-card-count { font-size: 12px; color: var(--text-student-secondary); }
+
+.topic-card-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--bg-student-sidebar);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.topic-card-fill {
+  height: 100%;
+  background: var(--text-student-primary);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+/* ── Filters ──────────────────────────────────── */
+.task-filters {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 6px 16px;
+  border: 1px solid var(--border-student-color);
+  background: white;
+  border-radius: 99px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+  color: var(--text-student-secondary);
+}
+.filter-btn.active {
+  background: var(--text-student-primary);
+  color: white;
+  border-color: var(--text-student-primary);
+}
+.filter-btn:hover:not(.active) {
+  background: var(--bg-student-sidebar);
+  color: var(--text-student-primary);
+}
+
+.task-count {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--text-student-secondary);
+}
+
+/* ── Task Rows ────────────────────────────────── */
+.task-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.task-row-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: var(--border-student-solid);
+  border-radius: var(--radius-md);
+  background: white;
+  text-decoration: none;
+  color: var(--text-student-primary);
+  transition: all 0.15s;
+}
+.task-row-card:hover {
+  border-color: var(--text-student-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.task-row-card.solved {
+  background: #FAFFF9;
+  border-color: #BBF7D0;
+}
+
+.task-row-status { flex-shrink: 0; }
+.icon-solved { color: #22C55E; }
+.icon-attempted { color: #F59E0B; }
+.icon-new { color: var(--text-student-secondary); }
+
+.task-row-body { flex: 1; min-width: 0; }
+.task-row-title { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.task-row-desc { font-size: 12px; color: var(--text-student-secondary); line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.task-row-meta { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+
+.difficulty-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 99px;
+  text-transform: capitalize;
+}
+
+.attempts-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--bg-student-sidebar);
+  color: var(--text-student-secondary);
+}
+
+.task-row-arrow { color: var(--text-student-secondary); flex-shrink: 0; }
+
+.tasks-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px;
+  text-align: center;
+  color: var(--text-student-secondary);
+}

@@ -1,0 +1,164 @@
+.teacher-app-container {
+  display: grid;
+  grid-template-columns: 240px 1fr; 
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-teacher-body);
+  color: var(--text-teacher-primary);
+}
+
+.teacher-sidebar {
+  background: var(--bg-teacher-card);
+  border-right: 1px solid var(--border-teacher-subtle);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.teacher-sidebar .logo-area {
+  padding: 0 12px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-teacher-primary);
+}
+
+.teacher-sidebar .nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.teacher-sidebar .nav-label {
+  padding: 0 12px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-teacher-tertiary);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.teacher-sidebar .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  color: var(--text-teacher-secondary);
+  font-size: 0.875rem;
+  transition: all 0.15s ease;
+}
+
+.teacher-sidebar .nav-item:hover {
+  background-color: var(--bg-teacher-hover);
+  color: var(--text-teacher-primary);
+}
+
+.teacher-sidebar .nav-item.active {
+  background-color: var(--bg-teacher-hover);
+  color: var(--text-teacher-primary);
+  font-weight: 500;
+}
+
+.teacher-main-content {
+  overflow-y: auto;
+  padding: 32px;
+}
+
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 12px;
+  border-top: 1px solid var(--border-teacher-subtle);
+  margin-top: auto;
+}
+
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-user-info {
+  min-width: 0;
+}
+
+.sidebar-user-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-teacher-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-user-role {
+  font-size: 11px;
+  color: var(--text-teacher-secondary);
+  text-transform: capitalize;
+}
+
+.logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-teacher-secondary);
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+
+.logout-btn:hover {
+  color: var(--text-teacher-primary);
+  background: var(--bg-teacher-hover);
+}
+
+.page-loading {
+  padding: 40px;
+  color: var(--text-teacher-secondary);
+  font-size: 14px;
+}
+
+.header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+
+.page-title h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Avatar Utils for Teacher */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #E0E7FF;
+  color: var(--accent-teacher-purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
