@@ -2,8 +2,8 @@ from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File
 from sqlalchemy.orm import Session
 import os, shutil, uuid
 
-from app.database import get_db
-from app import models, schemas, auth
+from ..database import get_db
+from .. import models, schemas, auth
 
 AVATAR_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'static', 'avatars')
 os.makedirs(AVATAR_DIR, exist_ok=True)

@@ -3,8 +3,8 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from collections import defaultdict
 
-from app.database import get_db
-from app import models, schemas, auth
+from ..database import get_db
+from .. import models, schemas, auth
 
 router = APIRouter(prefix="/groups", tags=["groups"])
 
@@ -13,19 +13,27 @@ def _generate_invite_code() -> str:
     return secrets.token_urlsafe(8)
 
 
+def _group_to_out(group: models.Group, db: Session) -> schemas.GroupOut:
+    count = db.query(models.Enrollment).filter(models.Enrollment.group_id == group.id).count()
+    out = schemas.GroupOut(
+        id=group.id,
+        name=group.name,
+        invite_code=group.invite_code,
+        teacher_id=group.teacher_id,
+        course_ids=[c.id for c in group.courses_m2m],
+        created_at=group.created_at,
+        student_count=count,
+    )
+    return out
+
+
 @router.get("/", response_model=list[schemas.GroupOut])
 def get_groups(
     db: Session = Depends(get_db),
     current_user: models.User = Depends(auth.require_teacher),
 ):
     groups = db.query(models.Group).filter(models.Group.teacher_id == current_user.id).all()
-    result = []
-    for g in groups:
-        count = db.query(models.Enrollment).filter(models.Enrollment.group_id == g.id).count()
-        out = schemas.GroupOut.model_validate(g)
-        out.student_count = count
-        result.append(out)
-    return result
+    return [_group_to_out(g, db) for g in groups]
 
 
 @router.post("/", response_model=schemas.GroupOut, status_code=201)
@@ -36,16 +44,22 @@ def create_group(
 ):
     group = models.Group(
         name=data.name,
-        course_id=data.course_id,
         teacher_id=current_user.id,
         invite_code=_generate_invite_code(),
     )
     db.add(group)
+    db.flush()  # получаем group.id до коммита
+
+    if data.course_ids:
+        courses = db.query(models.Course).filter(
+            models.Course.id.in_(data.course_ids),
+            models.Course.teacher_id == current_user.id,
+        ).all()
+        group.courses_m2m = courses
+
     db.commit()
     db.refresh(group)
-    out = schemas.GroupOut.model_validate(group)
-    out.student_count = 0
-    return out
+    return _group_to_out(group, db)
 
 
 @router.get("/{group_id}", response_model=schemas.GroupOut)
@@ -60,10 +74,36 @@ def get_group(
     ).first()
     if not group:
         raise HTTPException(status_code=404, detail="Group not found")
-    count = db.query(models.Enrollment).filter(models.Enrollment.group_id == group_id).count()
-    out = schemas.GroupOut.model_validate(group)
-    out.student_count = count
-    return out
+    return _group_to_out(group, db)
+
+
+@router.patch("/{group_id}", response_model=schemas.GroupOut)
+def update_group(
+    group_id: int,
+    data: schemas.GroupUpdate,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.require_teacher),
+):
+    group = db.query(models.Group).filter(
+        models.Group.id == group_id,
+        models.Group.teacher_id == current_user.id,
+    ).first()
+    if not group:
+        raise HTTPException(status_code=404, detail="Group not found")
+
+    if data.name is not None:
+        group.name = data.name
+
+    if data.course_ids is not None:
+        courses = db.query(models.Course).filter(
+            models.Course.id.in_(data.course_ids),
+            models.Course.teacher_id == current_user.id,
+        ).all()
+        group.courses_m2m = courses
+
+    db.commit()
+    db.refresh(group)
+    return _group_to_out(group, db)
 
 
 @router.delete("/{group_id}", status_code=204)

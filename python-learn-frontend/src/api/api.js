@@ -56,7 +56,7 @@ export const api = {
   getAvailableAchievements: () => request("GET", "/students/available-achievements"),
 
   // Courses
-  getCourses: () => request("GET", "/courses"),
+  getCourses: () => request("GET", "/courses/"),
   createCourse: (data) => request("POST", "/courses", data),
   getCourse: (id) => request("GET", `/courses/${id}`),
   updateCourse: (id, data) => request("PATCH", `/courses/${id}`, data),
@@ -88,8 +88,9 @@ export const api = {
   getMySubmissions: (taskId) => request("GET", `/tasks/${taskId}/my-submissions`),
 
   // Groups
-  getGroups: () => request("GET", "/groups"),
-  createGroup: (data) => request("POST", "/groups", data),
+  getGroups: () => request("GET", "/groups/"),
+  createGroup: (data) => request("POST", "/groups/", data),
+  updateGroup: (id, data) => request("PATCH", `/groups/${id}`, data),
   getGroup: (id) => request("GET", `/groups/${id}`),
   deleteGroup: (id) => request("DELETE", `/groups/${id}`),
   getGroupStudents: (id) => request("GET", `/groups/${id}/students`),

@@ -186,7 +186,12 @@ class TaskOut(BaseModel):
 
 class GroupCreate(BaseModel):
     name: str
-    course_id: Optional[int] = None
+    course_ids: list[int] = []
+
+
+class GroupUpdate(BaseModel):
+    name: Optional[str] = None
+    course_ids: Optional[list[int]] = None
 
 
 class GroupOut(BaseModel):
@@ -194,7 +199,7 @@ class GroupOut(BaseModel):
     name: str
     invite_code: str
     teacher_id: int
-    course_id: Optional[int]
+    course_ids: list[int] = []
     created_at: datetime
     student_count: int = 0
 

@@ -202,3 +202,32 @@
   font-size: 16px;
   color: var(--text-teacher-primary);
 }
+
+.group-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 160px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid var(--border-teacher-subtle);
+  border-radius: 8px;
+  background: var(--bg-teacher-subtle);
+}
+
+.group-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-teacher-primary);
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.group-checkbox-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--text-teacher-primary);
+  cursor: pointer;
+}

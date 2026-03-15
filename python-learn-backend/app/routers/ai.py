@@ -3,8 +3,8 @@ import asyncio
 import httpx
 import logging
 
-from app import schemas, auth, models
-from app.config import settings
+from .. import schemas, auth, models
+from ..config import settings
 
 logger = logging.getLogger(__name__)
 

@@ -1,9 +1,18 @@
-from sqlalchemy import Column, Integer, String, Text, Boolean, Float, ForeignKey, DateTime, Enum
+from sqlalchemy import Column, Integer, String, Text, Boolean, Float, ForeignKey, DateTime, Enum, Table
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 import enum
 
 from .database import Base
+
+
+# Many-to-many: группа может иметь несколько курсов
+group_courses = Table(
+    "group_courses",
+    Base.metadata,
+    Column("group_id", Integer, ForeignKey("groups.id"), primary_key=True),
+    Column("course_id", Integer, ForeignKey("courses.id"), primary_key=True),
+)
 
 
 class UserRole(str, enum.Enum):
@@ -58,6 +67,7 @@ class Course(Base):
     teacher = relationship("User", back_populates="courses", foreign_keys=[teacher_id])
     modules = relationship("Module", back_populates="course", order_by="Module.order", cascade="all, delete-orphan")
     groups = relationship("Group", back_populates="course")
+    groups_m2m = relationship("Group", secondary="group_courses", back_populates="courses_m2m")
 
 
 class Module(Base):
@@ -119,6 +129,7 @@ class Group(Base):
 
     teacher = relationship("User", back_populates="groups", foreign_keys=[teacher_id])
     course = relationship("Course", back_populates="groups")
+    courses_m2m = relationship("Course", secondary="group_courses", back_populates="groups_m2m")
     enrollments = relationship("Enrollment", back_populates="group", cascade="all, delete-orphan")
 
 

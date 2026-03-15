@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session, joinedload
 
-from app.database import get_db
-from app import models, schemas, auth
+from ..database import get_db
+from .. import models, schemas, auth
 
 router = APIRouter(prefix="/courses", tags=["courses"])
 
@@ -11,10 +11,15 @@ router = APIRouter(prefix="/courses", tags=["courses"])
 def get_courses(db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_user)):
     if current_user.role in (models.UserRole.teacher, models.UserRole.admin):
         return db.query(models.Course).filter(models.Course.teacher_id == current_user.id).all()
-    # Студент видит только курсы своих групп
+    # Студент видит курсы из групп, в которых состоит (через many2many)
     enrolled_group_ids = [e.group_id for e in current_user.enrollments]
     groups = db.query(models.Group).filter(models.Group.id.in_(enrolled_group_ids)).all()
-    course_ids = [g.course_id for g in groups if g.course_id]
+    course_ids = set()
+    for g in groups:
+        for c in g.courses_m2m:
+            course_ids.add(c.id)
+    if not course_ids:
+        return []
     return db.query(models.Course).filter(models.Course.id.in_(course_ids)).all()
 
 

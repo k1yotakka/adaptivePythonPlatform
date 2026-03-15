@@ -142,3 +142,115 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-teacher-secondary);
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 9px 12px;
+  border: 1px solid var(--border-teacher-subtle);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--text-teacher-primary);
+  outline: none;
+}
+
+.create-group-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-actions-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.course-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid var(--border-teacher-subtle);
+  border-radius: 8px;
+  background: var(--bg-teacher-subtle);
+}
+
+.course-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-teacher-primary);
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.course-checkbox-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--text-teacher-primary);
+  cursor: pointer;
+}
+
+.group-courses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.course-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  background: var(--bg-teacher-subtle);
+  border: 1px solid var(--border-teacher-subtle);
+  color: var(--text-teacher-secondary);
+}
+
+.group-card-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.group-edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.group-edit-input {
+  padding: 8px 12px;
+  border: 1px solid var(--border-teacher-subtle);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.group-edit-input:focus {
+  border-color: var(--text-teacher-primary);
+  outline: none;
+}

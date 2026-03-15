@@ -1,31 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../../../api/api';
-import { Plus, BookOpen, Edit, Trash2, Eye, EyeOff } from 'lucide-react';
+import { Plus, BookOpen, Edit, Trash2, Eye, EyeOff, Users } from 'lucide-react';
 import Button from '../../../components/UI/Button';
 import './Courses.css';
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
+  const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
   const [newTitle, setNewTitle] = useState('');
   const [newDesc, setNewDesc] = useState('');
+  const [newGroupIds, setNewGroupIds] = useState([]);
   const [creating, setCreating] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    loadCourses();
+    loadData();
   }, []);
 
-  const loadCourses = async () => {
+  const loadData = async () => {
     try {
-      const data = await api.getCourses();
-      setCourses(data);
+      const [coursesData, groupsData] = await Promise.all([
+        api.getCourses(),
+        api.getGroups(),
+      ]);
+      setCourses(coursesData);
+      setGroups(groupsData);
     } catch (err) {
       console.error(err);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const toggleGroupId = (id) => {
+    if (newGroupIds.includes(id)) {
+      setNewGroupIds(newGroupIds.filter((g) => g !== id));
+    } else {
+      setNewGroupIds([...newGroupIds, id]);
     }
   };
 
@@ -35,10 +49,23 @@ export default function Courses() {
     setCreating(true);
     try {
       const course = await api.createCourse({ title: newTitle, description: newDesc });
+
+      // Attach the new course to selected groups
+      if (newGroupIds.length > 0) {
+        await Promise.all(
+          newGroupIds.map((groupId) => {
+            const group = groups.find((g) => g.id === groupId);
+            const existingIds = group?.course_ids || [];
+            return api.updateGroup(groupId, { course_ids: [...existingIds, course.id] });
+          })
+        );
+      }
+
       setCourses([...courses, course]);
       setShowCreate(false);
       setNewTitle('');
       setNewDesc('');
+      setNewGroupIds([]);
       navigate(`/teacher/course/${course.id}`);
     } catch (err) {
       console.error(err);
@@ -107,6 +134,24 @@ export default function Courses() {
                 rows={3}
               />
             </div>
+            {groups.length > 0 && (
+              <div className="form-group">
+                <label>Add to Groups (optional)</label>
+                <div className="group-checkboxes">
+                  {groups.map((g) => (
+                    <label key={g.id} className="group-checkbox-item">
+                      <input
+                        type="checkbox"
+                        checked={newGroupIds.includes(g.id)}
+                        onChange={() => toggleGroupId(g.id)}
+                      />
+                      <Users size={14} />
+                      {g.name}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
             <div className="form-actions">
               <Button type="button" variant="secondary" onClick={() => setShowCreate(false)}>Cancel</Button>
               <Button type="submit" variant="primary" disabled={creating}>

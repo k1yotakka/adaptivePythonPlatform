@@ -4,8 +4,8 @@ from sqlalchemy import func as sa_func, distinct
 from datetime import date, timedelta
 from collections import defaultdict
 
-from app.database import get_db
-from app import models, schemas, auth
+from ..database import get_db
+from .. import models, schemas, auth
 
 router = APIRouter(prefix="/students", tags=["students"])
 
@@ -53,7 +53,11 @@ def get_student_dashboard(
     group_ids = [e.group_id for e in enrollments]
 
     groups = db.query(models.Group).filter(models.Group.id.in_(group_ids)).all() if group_ids else []
-    course_ids = [g.course_id for g in groups if g.course_id]
+    # Collect courses from many2many group_courses table
+    course_ids = set()
+    for g in groups:
+        for c in g.courses_m2m:
+            course_ids.add(c.id)
 
     courses = db.query(models.Course).filter(models.Course.id.in_(course_ids)).all() if course_ids else []
 
