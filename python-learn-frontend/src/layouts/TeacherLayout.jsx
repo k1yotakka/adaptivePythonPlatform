@@ -26,8 +26,8 @@ export default function TeacherLayout() {
     <div className="teacher-app-container">
       <aside className="teacher-sidebar">
         <div className="logo-area">
-          <div className="avatar" style={{ background: 'var(--text-teacher-primary)', color: 'white', fontSize: '11px' }}>Py</div>
-          <span>PyLearn</span>
+          <div className="avatar" style={{ background: 'var(--text-teacher-primary)', color: 'white', fontSize: '11px' }}>Cm</div>
+          <span>CodeMentor</span>
         </div>
 
         <nav className="nav-section">

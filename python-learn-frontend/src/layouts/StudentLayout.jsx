@@ -20,7 +20,7 @@ export default function StudentLayout() {
       <nav className="student-sidebar">
         <div className="brand">
           <div className="brand-icon"></div>
-          <span>PyLearn.</span>
+          <span>CodeMentor</span>
         </div>
 
         <div className="nav-group">

@@ -12,9 +12,15 @@ class Base(DeclarativeBase):
 
 
 def run_migrations():
+    from . import models
+    Base.metadata.create_all(bind=engine)
+
     with engine.connect() as conn:
-        # Add new columns safely
-        conn.execute(text("ALTER TABLE users ADD COLUMN IF NOT EXISTS avatar_url VARCHAR(300)"))
+
+        conn.execute(text("""
+                    ALTER TABLE users
+                    ADD COLUMN IF NOT EXISTS avatar_url VARCHAR(300)
+                """))
 
         # Create group_courses many2many table if not exists
         conn.execute(text("""

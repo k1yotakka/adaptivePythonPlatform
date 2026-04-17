@@ -1,0 +1,39 @@
+# Виртуальные окружения
+.venv/
+venv/
+env/
+
+# Python кэш
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Тестовые и временные файлы
+*.db
+*.sqlite3
+test_*.py
+reseed.py
+create_db.py
+migrate.py
+ts.md
+
+# Переменные окружения (на сервере монтируется .env через docker-compose)
+.env
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Статика — создаётся и хранится в volume
+static/
+
+# Docker файлы (не нужны внутри контейнера)
+Dockerfile
+.dockerignore

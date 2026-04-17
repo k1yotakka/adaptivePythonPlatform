@@ -6,7 +6,6 @@ from .. import models, schemas, auth
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])
 
-# Emoji hints for known topic keys — fallback to 🏆 for custom topics
 TOPIC_EMOJI = {
     "loops": "🔁", "functions": "⚙️", "oop": "🏗️",
     "lists_dicts": "🥷", "strings": "📝", "data_types": "📦",

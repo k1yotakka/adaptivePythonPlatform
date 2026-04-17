@@ -34,7 +34,7 @@ export default function Login() {
     <div className="auth-container">
       <div className="auth-header">
         <h1>Welcome Back</h1>
-        <p>Sign in to your PyLearn account</p>
+        <p>Sign in to your CodeMentor account</p>
       </div>
 
       <form onSubmit={handleLogin} className="auth-form">
