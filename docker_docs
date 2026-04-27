@@ -1,4 +1,4 @@
-# PyLearn — Запуск через Docker
+# CodeMentor — Запуск через Docker
 
 ## Требования
 
@@ -35,12 +35,12 @@ docker compose up -d --build
 
 ## Логины по умолчанию
 
-| Роль    | Email                 | Пароль     |
-|---------|-----------------------|------------|
-| Admin   | admin@pylearn.com     | admin123   |
-| Teacher | teacher@pylearn.com   | teacher123 |
-| Teacher | marat@pylearn.com     | teacher123 |
-| Student | arman@student.com     | student123 |
+| Роль    | Email                   | Пароль     |
+|---------|-------------------------|------------|
+| Admin   | admin@pylearn.com       | admin123   |
+| Teacher | teacher1@coementor.com  | teacher123 |
+| Teacher | teacher2@codementor.com | teacher123 |
+| Student | arman@student.com       | student123 |
 
 Инвайт-коды групп: `fall2025`, `spring2026`, `intro101`
 
