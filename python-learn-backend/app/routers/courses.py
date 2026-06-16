@@ -11,16 +11,31 @@ router = APIRouter(prefix="/courses", tags=["courses"])
 def get_courses(db: Session = Depends(get_db), current_user: models.User = Depends(auth.get_current_user)):
     if current_user.role in (models.UserRole.teacher, models.UserRole.admin):
         return db.query(models.Course).filter(models.Course.teacher_id == current_user.id).all()
-    # Студент видит курсы из групп, в которых состоит (через many2many)
+    # 1) Default learning path: available to every student based on their level
+    default_query = db.query(models.Course).filter(
+        models.Course.is_default == True,
+        models.Course.is_published == True,
+    )
+    if current_user.level:
+        default_query = default_query.filter(
+            (models.Course.level == None) | (models.Course.level == current_user.level)
+        )
+    default_courses = default_query.all()
+
+    # 2) Teacher-led group courses: available only through enrolled groups
     enrolled_group_ids = [e.group_id for e in current_user.enrollments]
-    groups = db.query(models.Group).filter(models.Group.id.in_(enrolled_group_ids)).all()
+    groups = db.query(models.Group).filter(models.Group.id.in_(enrolled_group_ids)).all() if enrolled_group_ids else []
     course_ids = set()
     for g in groups:
         for c in g.courses_m2m:
             course_ids.add(c.id)
-    if not course_ids:
-        return []
-    return db.query(models.Course).filter(models.Course.id.in_(course_ids)).all()
+
+    group_courses = db.query(models.Course).filter(models.Course.id.in_(course_ids)).all() if course_ids else []
+
+    # Merge without duplicates
+    courses_by_id = {course.id: course for course in default_courses + group_courses}
+    return list(courses_by_id.values())
+
 
 
 @router.post("/", response_model=schemas.CourseOut, status_code=201)

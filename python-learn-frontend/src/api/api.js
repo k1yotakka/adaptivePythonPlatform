@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:8000/api/v1";
+const API_ROOT = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const BASE_URL = `${API_ROOT}/api/v1`;
 
 function getToken() {
   return localStorage.getItem("token");

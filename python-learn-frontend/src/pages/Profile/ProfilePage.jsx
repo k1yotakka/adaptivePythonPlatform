@@ -4,7 +4,7 @@ import { api } from '../../api/api';
 import { Camera, Save, KeyRound, User, Mail } from 'lucide-react';
 import './ProfilePage.css';
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 export default function ProfilePage() {
   const { user, updateUser } = useAuth();

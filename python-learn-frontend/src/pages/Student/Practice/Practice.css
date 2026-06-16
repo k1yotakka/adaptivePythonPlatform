@@ -133,7 +133,8 @@
 
 /* Editor */
 .editor-container {
-  flex: 1 1 0;
+  flex: 0 0 40%;
+  max-height: 400px;
   min-height: 180px;
   background-color: var(--bg-practice-editor);
   border-radius: var(--radius-md);
@@ -167,12 +168,17 @@
 
 /* AI Panel */
 .ai-panel {
-  flex-shrink: 0;
+  flex: 1; /* занимает всё оставшееся место */
   border-top: 1px dashed var(--border-student-color);
   padding-top: var(--space-lg);
+
   display: grid;
   grid-template-columns: 240px 1fr;
   gap: var(--space-xl);
+
+  min-height: 200px;
+  max-height: none; /* убираем ограничение */
+  overflow: hidden;
 }
 
 .mentor-profile {
@@ -210,6 +216,7 @@
 .feedback-container {
   height: 100%;
   overflow-y: auto;
+  min-height: 200px;
 }
 
 .feedback-empty {
@@ -227,7 +234,8 @@
 }
 
 .feedback-content {
-  background-color: #FAFAFA; 
+  min-height: 200px;
+  background-color: #FAFAFA;
   border: 1px solid var(--border-student-color);
   border-radius: var(--radius-md);
   padding: var(--space-md);
@@ -236,7 +244,7 @@
 
 .feedback-badge {
   position: absolute;
-  top: -10px;
+  top: -5px;
   left: 16px;
   background: #FFFFFF;
   border: 1px solid var(--border-student-color);
@@ -320,11 +328,6 @@
 .ai-question-input:focus {
   outline: none;
   border-color: var(--text-student-primary);
-}
-
-.ai-panel {
-  min-height: 180px;
-  max-height: 220px;
 }
 
 .submit-result {

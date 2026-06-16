@@ -62,6 +62,8 @@ class Course(Base):
     description = Column(Text, nullable=True)
     teacher_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     is_published = Column(Boolean, default=False)
+    is_default = Column(Boolean, default=False)  # system course available without group enrollment
+    level = Column(String(50), nullable=True)  # beginner/intermediate/advanced for default learning paths
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     teacher = relationship("User", back_populates="courses", foreign_keys=[teacher_id])

@@ -70,10 +70,7 @@ body {
   font-family: var(--font-sans);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* Base Utility Classes */
@@ -83,3 +80,11 @@ body {
 .font-medium { font-weight: 500; }
 
 a { text-decoration: none; }
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+

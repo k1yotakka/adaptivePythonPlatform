@@ -22,6 +22,16 @@ def run_migrations():
                     ADD COLUMN IF NOT EXISTS avatar_url VARCHAR(300)
                 """))
 
+        conn.execute(text("""
+                                    ALTER TABLE courses
+                                    ADD COLUMN IF NOT EXISTS is_default BOOLEAN DEFAULT FALSE
+                                """))
+
+        conn.execute(text("""
+                                    ALTER TABLE courses
+                                    ADD COLUMN IF NOT EXISTS level VARCHAR(50)
+                                """))
+
         # Create group_courses many2many table if not exists
         conn.execute(text("""
             CREATE TABLE IF NOT EXISTS group_courses (

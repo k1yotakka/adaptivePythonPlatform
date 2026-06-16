@@ -1,7 +1,7 @@
 .student-layout {
   display: flex;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   background-color: var(--bg-student-body);
   color: var(--text-student-primary);
 }
@@ -9,12 +9,14 @@
 .student-sidebar {
   width: 260px;
   background-color: var(--bg-student-sidebar);
-  height: 100%;
+  height: 100vh;
   padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  border-right: var(--border-student-solid); 
+  border-right: var(--border-student-solid);
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
 }
 
 .student-sidebar .brand {
@@ -130,14 +132,13 @@
 
 .student-main {
   flex: 1;
-  overflow-y: auto;
+  min-width: 0;
   padding: var(--space-xl) 60px;
   display: flex;
   flex-direction: column;
   gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .student-main:has(.screening-test-page) {

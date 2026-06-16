@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { LayoutDashboard, Map, Code2, TrendingUp, LogOut, UserPlus, UserCircle } from 'lucide-react';
 import '../styles/student.css';
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 export default function StudentLayout() {
   const { user, logout } = useAuth();

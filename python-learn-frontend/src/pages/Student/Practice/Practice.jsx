@@ -335,6 +335,8 @@ export default function Practice() {
                   onValueChange={(c) => setCode(c)}
                   highlight={(c) => highlight(c, languages.python, 'python')}
                   padding={16}
+                  onPaste={(e) => e.preventDefault()}
+                  onDrop={(e) => e.preventDefault()}
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: 13,

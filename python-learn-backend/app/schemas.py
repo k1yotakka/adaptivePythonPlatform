@@ -60,12 +60,15 @@ class UserGoalUpdate(BaseModel):
 class CourseCreate(BaseModel):
     title: str
     description: Optional[str] = None
-
+    is_default: bool = False
+    level: Optional[str] = None
 
 class CourseUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     is_published: Optional[bool] = None
+    is_default: Optional[bool] = None
+    level: Optional[str] = None
 
 
 class CourseOut(BaseModel):
@@ -73,6 +76,8 @@ class CourseOut(BaseModel):
     title: str
     description: Optional[str]
     is_published: bool
+    is_default: bool = False
+    level: Optional[str] = None
     teacher_id: int
     created_at: datetime
 

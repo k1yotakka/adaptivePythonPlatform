@@ -10,10 +10,21 @@ from .. import models, schemas, auth
 router = APIRouter(prefix="/students", tags=["students"])
 
 TOPIC_EMOJI = {
-    "loops": "🔁", "functions": "⚙️", "oop": "🏗️",
-    "lists_dicts": "🥷", "strings": "📝", "data_types": "📦",
-    "algorithms": "🧮", "files": "📁", "exceptions": "⚠️",
-    "recursion": "🔄", "variables": "🔤", "conditionals": "🔀",
+    "variables": "🔤",
+    "data_types": "📦",
+    "operators": "➕",
+    "conditionals": "🔀",
+    "loops": "🔁",
+    "strings": "📝",
+    "lists": "📋",
+    "dictionaries": "📖",
+    "sets": "🧩",
+    "functions": "⚙️",
+    "debugging": "🐞",
+    "oop": "🏗️",
+    "recursion": "🔄",
+    "algorithms": "🧮",
+    "sorting_searching": "🔎",
 }
 
 
@@ -59,7 +70,20 @@ def get_student_dashboard(
         for c in g.courses_m2m:
             course_ids.add(c.id)
 
-    courses = db.query(models.Course).filter(models.Course.id.in_(course_ids)).all() if course_ids else []
+    group_courses = db.query(models.Course).filter(models.Course.id.in_(course_ids)).all() if course_ids else []
+
+    default_query = db.query(models.Course).filter(
+        models.Course.is_default == True,
+        models.Course.is_published == True,
+    )
+    if current_user.level:
+        default_query = default_query.filter(
+            (models.Course.level == None) | (models.Course.level == current_user.level)
+        )
+    default_courses = default_query.all()
+
+    courses_by_id = {course.id: course for course in default_courses + group_courses}
+    courses = list(courses_by_id.values())
 
     modules_data = []
     for course in courses:
