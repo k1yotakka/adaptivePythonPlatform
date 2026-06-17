@@ -1,4 +1,5 @@
-import { Outlet, Navigate, Link, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Outlet, Navigate, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LayoutDashboard, Map, Code2, TrendingUp, LogOut, UserPlus, UserCircle } from 'lucide-react';
 import '../styles/student.css';
@@ -8,6 +9,16 @@ const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 export default function StudentLayout() {
   const { user, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // If a student arrives here with a pending invite (clicked an invite link
+  // while logged out, then signed in / finished onboarding), finish the join.
+  useEffect(() => {
+    const pending = localStorage.getItem('pendingInvite');
+    if (pending && user && user.role === 'student') {
+      navigate(`/join/${pending}`, { replace: true });
+    }
+  }, [user, navigate]);
 
   if (!user || user.role !== 'student') {
     return <Navigate to="/login" replace />;

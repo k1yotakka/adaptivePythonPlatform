@@ -25,6 +25,7 @@ import Progress from './pages/Student/Progress';
 import Practice from './pages/Student/Practice/Practice';
 import TaskList from './pages/Tasks/TaskList';
 import JoinGroup from './pages/Student/JoinGroup';
+import JoinByLink from './pages/Student/JoinByLink';
 
 // Teacher
 import TeacherDashboard from './pages/Teacher/Dashboard';
@@ -104,6 +105,9 @@ function App() {
             <Route path="admin/teachers" element={<Teachers />} />
             <Route path="profile" element={<ProfilePage />} />
           </Route>
+
+          <Route path="/join/:code" element={<JoinByLink />} />
+
 
           {/* 404 */}
           <Route path="*" element={<NotFound />} />
