@@ -56,7 +56,7 @@ def _award_achievements(db: Session, student: models.User):
                 (models.Task.level == None) | (models.Task.level == student.level)
             )
         total = total_query.count()
-        
+
         solved_query = (
             db.query(models.Submission.task_id)
             .join(models.Task)
@@ -72,7 +72,7 @@ def _award_achievements(db: Session, student: models.User):
                 (models.Task.level == None) | (models.Task.level == student.level)
             )
         solved = solved_query.distinct().count()
-        
+
         if total > 0 and solved >= total:
             topic_display = topic.replace("_", " ").title()
             db.add(models.Achievement(
@@ -87,8 +87,8 @@ def _award_achievements(db: Session, student: models.User):
 
 @router.get("/topics")
 def get_topics(
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user),
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.get_current_user),
 ):
     """Returns all distinct topic values from existing tasks."""
     rows = (
@@ -103,9 +103,9 @@ def get_topics(
 
 @router.get("/", response_model=list[schemas.TaskOut])
 def get_tasks(
-    task_type: str = None,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user),
+        task_type: str = None,
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.get_current_user),
 ):
     query = db.query(models.Task)
     if task_type:
@@ -130,9 +130,9 @@ def get_tasks(
 
 @router.post("/", response_model=schemas.TaskOut, status_code=201)
 def create_task(
-    data: schemas.TaskCreate,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.require_teacher),
+        data: schemas.TaskCreate,
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.require_teacher),
 ):
     task = models.Task(**data.model_dump(), created_by=current_user.id)
     db.add(task)
@@ -143,9 +143,9 @@ def create_task(
 
 @router.get("/{task_id}", response_model=schemas.TaskOut)
 def get_task(
-    task_id: int,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user),
+        task_id: int,
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.get_current_user),
 ):
     task = db.query(models.Task).filter(models.Task.id == task_id).first()
     if not task:
@@ -155,10 +155,10 @@ def get_task(
 
 @router.patch("/{task_id}", response_model=schemas.TaskOut)
 def update_task(
-    task_id: int,
-    data: schemas.TaskUpdate,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.require_teacher),
+        task_id: int,
+        data: schemas.TaskUpdate,
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.require_teacher),
 ):
     task = db.query(models.Task).filter(
         models.Task.id == task_id,
@@ -175,9 +175,9 @@ def update_task(
 
 @router.delete("/{task_id}", status_code=204)
 def delete_task(
-    task_id: int,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.require_teacher),
+        task_id: int,
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.require_teacher),
 ):
     task = db.query(models.Task).filter(
         models.Task.id == task_id,
@@ -203,15 +203,19 @@ def _evaluate_submission(code, task):
             f.write(code)
             tmp_path = f.name
 
-        result = subprocess.run(
-            [sys.executable, tmp_path],
-            capture_output=True, text=True, timeout=10, encoding='utf-8'
-        )
-        os.unlink(tmp_path)
+        try:
+            result = subprocess.run(
+                [sys.executable, "-I", tmp_path],
+                capture_output=True, text=True, timeout=10, encoding='utf-8'
+            )
+        finally:
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
 
         # Clean both outputs: remove empty lines, strip trailing spaces
         actual_lines = [line.rstrip() for line in result.stdout.replace("\r", "").strip().split("\n") if line.strip()]
-        expected_lines = [line.rstrip() for line in task.expected_output.replace("\r", "").strip().split("\n") if line.strip()]
+        expected_lines = [line.rstrip() for line in task.expected_output.replace("\r", "").strip().split("\n") if
+                          line.strip()]
 
         # Case 1: exact match
         if actual_lines == expected_lines:
@@ -236,10 +240,10 @@ def _evaluate_submission(code, task):
 
 @router.post("/{task_id}/submit", response_model=schemas.SubmissionOut, status_code=201)
 def submit_task(
-    task_id: int,
-    data: schemas.SubmissionCreate,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user),
+        task_id: int,
+        data: schemas.SubmissionCreate,
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.get_current_user),
 ):
     task = db.query(models.Task).filter(models.Task.id == task_id).first()
     if not task:
@@ -276,9 +280,9 @@ def submit_task(
 
 @router.get("/{task_id}/my-submissions", response_model=list[schemas.SubmissionOut])
 def get_my_submissions(
-    task_id: int,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user),
+        task_id: int,
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.get_current_user),
 ):
     return db.query(models.Submission).filter(
         models.Submission.task_id == task_id,
@@ -288,9 +292,9 @@ def get_my_submissions(
 
 @router.get("/{task_id}/status")
 def get_task_status(
-    task_id: int,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user),
+        task_id: int,
+        db: Session = Depends(get_db),
+        current_user: models.User = Depends(auth.get_current_user),
 ):
     subs = db.query(models.Submission).filter(
         models.Submission.task_id == task_id,
