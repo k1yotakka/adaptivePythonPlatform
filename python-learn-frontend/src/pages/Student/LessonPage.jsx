@@ -152,13 +152,51 @@ export default function LessonPage() {
   );
 }
 
-function renderContent(content) {
-  // Простой рендер — переносы строк в <br>, ```code``` в <pre>
-  return content
-    .replace(/```python([\s\S]*?)```/g, '<pre class="code-block"><code>$1</code></pre>')
-    .replace(/```([\s\S]*?)```/g, '<pre class="code-block"><code>$1</code></pre>')
+// Lightweight, safe markdown renderer.
+// Code fences (```...```) are handled separately so headings/inline rules
+// never apply inside code — Python comments like "# ..." stay code, not <h2>.
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function inline(s) {
+  return s
     .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
-    .replace(/^# (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
-    .replace(/\n/g, '<br/>');
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
+}
+
+function renderText(text) {
+  const lines = text.split('\n');
+  let html = '';
+  let buf = [];
+  const flush = () => {
+    if (!buf.length) return;
+    html += `<p>${inline(buf.join('<br/>'))}</p>`;
+    buf = [];
+  };
+  for (const line of lines) {
+    if (/^###\s+/.test(line)) { flush(); html += `<h4>${inline(escapeHtml(line.replace(/^###\s+/, '')))}</h4>`; }
+    else if (/^##\s+/.test(line)) { flush(); html += `<h3>${inline(escapeHtml(line.replace(/^##\s+/, '')))}</h3>`; }
+    else if (/^#\s+/.test(line)) { flush(); html += `<h2>${inline(escapeHtml(line.replace(/^#\s+/, '')))}</h2>`; }
+    else if (line.trim() === '') { flush(); }
+    else { buf.push(escapeHtml(line)); }
+  }
+  flush();
+  return html;
+}
+
+function renderContent(content) {
+  const src = (content || '').replace(/\r\n/g, '\n');
+  const fenceRe = /```(\w*)\n?([\s\S]*?)```/g;
+  let html = '';
+  let last = 0;
+  let m;
+  while ((m = fenceRe.exec(src)) !== null) {
+    if (m.index > last) html += renderText(src.slice(last, m.index));
+    html += `<pre class="code-block"><code>${escapeHtml(m[2].replace(/\n$/, ''))}</code></pre>`;
+    last = m.index + m[0].length;
+  }
+  if (last < src.length) html += renderText(src.slice(last));
+  return html;
 }
